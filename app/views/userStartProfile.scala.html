@@ -22,14 +22,14 @@
                         <a class="nav-link" href="#">Nutzerliste</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Logout</a>
+                        <a class="nav-link" href="@routes.HomeController.index">Logout</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-        <!-- Page Content -->
+    <!-- Page Content -->
     <div class="container">
         <div class="row">
             <div class="col-lg-12 mt-5">
@@ -46,6 +46,7 @@
                         <label>Geburtsjahr:</label>
                         <input type="date">
                         <label>Dein Geschlecht:</label>
+                        <input hidden name="Geschlecht" value="1">
                         <select>
                             <option value="" selected disabled hidden>Choose here</option>
                             <option value="Männlich">Männlich</option>
@@ -55,15 +56,18 @@
                     </div>
                     <br>
                     <label>Schulform:</label>
-                    <input type="radio" name="schuleform" value="Block"> Block
-                    <input type="radio" name="schuleform" value="Wöchentlich"> Wöchentlich<br>
+                    <input type="radio" name="Schulform" value="Block"> Block
+                    <input type="radio" name="Schulform" value="Wöchentlich"> Wöchentlich<br>
                     <label>Ich möchte selbst Fahrten anbieten: </label>
-                    <input type="radio" name="istFahrer" value="Fahrer"> Ja
-                    <input type="radio" name="istFahrer" value="Mitfahrer"> Nein<br>
-                    <label>Alternative Email:</label>
-                    <input type="email"><br>
-                    <label>Handynummer:</label>
-                    <input type="tel"><br>
+                    <input type="radio" name="istFahrer" value="1"> Ja
+                    <input type="radio" name="istFahrer" value="2"> Nein<br>
+                    <label>Email:</label>
+                    <input name="Email" type="email"><br>
+                    <label>Alternativ Email:</label>
+                    <input name="AltEmail" type="email"><br>
+                    <label>Handy Nummer:</label>
+                    <input name="Handy" type="tel"><br>
+                    <button class="ui-button">Speichern</button><br>
                 </form>
             </div>
         </div>
