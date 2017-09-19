@@ -3,7 +3,6 @@ package controllers
 import javax.inject._
 import play.api._
 import play.api.mvc._
-import play.api.i18n.I18nSupport
 import services.Mysql
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
