@@ -8,3 +8,4 @@ target
 /.sbtserver
 /RUNNING_PID
 conf/application.conf
+conf/application-heroku.conf

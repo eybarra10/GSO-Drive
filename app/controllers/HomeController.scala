@@ -1,7 +1,6 @@
 package controllers
 
 import javax.inject._
-import play.api._
 import play.api.mvc._
 import services.Mysql
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -14,8 +13,8 @@ class HomeController @Inject()(mysql: Mysql) extends Controller {
     Ok(views.html.index.apply())
   }
 
-  def userStartPage = Action {
-    Ok(views.html.userStartPage.apply())
+  def userStartProfile = Action {
+    Ok(views.html.userStartProfile.apply())
   }
 
   def createProfilePost: Action[AnyContent] = Action.async { implicit request =>
@@ -28,12 +27,13 @@ class HomeController @Inject()(mysql: Mysql) extends Controller {
       val email = bodyMap("Email").head
       val altEmail = bodyMap("AltEmail").head
       val handy = bodyMap("Handy").head
-      val query = "INSERT INTO Benutzer (Vorname, Nachname, Geschlecht, Schulform, istFahrer, Email, AltEmail, Handy) VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING ID;"
+      val query = "INSERT INTO Benutzer (Vorname, Nachname, Geschlecht, Schulform, istFahrer, Email, AltEmail, Handy) VALUES (?, ?, ?, ?, ?, ?, ?, ?);"
       val eventuallyResult = mysql.connectionPool.sendPreparedStatement(query, Seq(vorname, nachname, geschlecht, schulform, istFahrer, email, altEmail, handy))
 
       eventuallyResult map { result =>
         if (result.rowsAffected == 1) {
-          Ok(views.html.test.apply())
+          val benutzer = Benutzer(vorname, nachname, geschlecht.toInt, schulform.toInt, istFahrer.toInt, email, altEmail, handy)
+          Ok(views.html.test(benutzer))
         } else NotFound("")
       }
     } getOrElse {
@@ -42,3 +42,4 @@ class HomeController @Inject()(mysql: Mysql) extends Controller {
   }
 }
 
+case class Benutzer(vorname: String, nachname: String, geschlecht: Integer, schulform: Integer, istFahrer: Integer, email: String, altEmail: String, handy: String)
