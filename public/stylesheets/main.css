@@ -7,3 +7,28 @@ body {
         padding-top: 56px;
     }
 }
+
+/* ------ LOGIN ------ */
+
+.login {
+    margin: 0 auto;
+    width: 300px;
+}
+
+.login .ui-button {
+    float: right;
+}
+
+.login_mail {
+    display: flex;
+    justify-content: space-between;
+}
+
+.login_password {
+    display: flex;
+    justify-content: space-between;
+}
+
+.login .ui-button {
+    justify-content: flex-end;
+}
