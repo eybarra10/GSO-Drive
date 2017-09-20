@@ -29,11 +29,11 @@ class HomeController @Inject()(mysql: Mysql) extends Controller {
       val handy = bodyMap("Handy").head
       val query = "INSERT INTO Benutzer (Vorname, Nachname, Geschlecht, Schulform, istFahrer, Email, AltEmail, Handy) VALUES (?, ?, ?, ?, ?, ?, ?, ?);"
       val eventuallyResult = mysql.connectionPool.sendPreparedStatement(query, Seq(vorname, nachname, geschlecht, schulform, istFahrer, email, altEmail, handy))
-
+      // val lastId = mysql.connectionPool.sendPreparedStatement("SELECT LAST_INSERT_ID();")
       eventuallyResult map { result =>
         if (result.rowsAffected == 1) {
-          val benutzer = Benutzer(vorname, nachname, geschlecht.toInt, schulform.toInt, istFahrer.toInt, email, altEmail, handy)
-          Ok(views.html.test(benutzer))
+          val benutzer = Benutzer(vorname, nachname, geschlecht, schulform, istFahrer.toInt, email, altEmail, handy)
+          Ok(views.html.StartPage(benutzer))
         } else NotFound("")
       }
     } getOrElse {
@@ -42,4 +42,4 @@ class HomeController @Inject()(mysql: Mysql) extends Controller {
   }
 }
 
-case class Benutzer(vorname: String, nachname: String, geschlecht: Integer, schulform: Integer, istFahrer: Integer, email: String, altEmail: String, handy: String)
+case class Benutzer(vorname: String, nachname: String, geschlecht: String, schulform: String, istFahrer: Integer, email: String, altEmail: String, handy: String)

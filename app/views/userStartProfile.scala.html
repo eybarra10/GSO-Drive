@@ -1,10 +1,9 @@
 @()
 
 @main("GSO Drive") {
-    <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">GSO Drive</a>
+            <a class="navbar-brand" href="@routes.HomeController.index">GSO Drive</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -29,7 +28,6 @@
         </div>
     </nav>
 
-    <!-- Page Content -->
     <div class="container">
         <div class="row">
             <div class="col-lg-12 mt-5">
@@ -46,18 +44,15 @@
                         <label>Geburtsjahr:</label>
                         <input type="date">
                         <label>Dein Geschlecht:</label>
-                        <input hidden name="Geschlecht" value="1">
-                        <select>
-                            <option value="" selected disabled hidden>wählen</option>
-                            <option value="Männlich">Männlich</option>
-                            <option value="Weiblich">Weiblich</option>
-                            <option value="Non-Binary">Non-Binary</option>
-                        </select>
+                        <input type="radio" name="Geschlecht" value="Männlich"> Männlich
+                        <input type="radio" name="Geschlecht" value="Weiblich"> Weiblich
+                        <input type="radio" name="Geschlecht" value="Non-Binary"> Non-Binary
+
                     </div>
                     <br>
                     <label>Schulform:</label>
-                    <input type="radio" name="Schulform" value="1"> Block
-                    <input type="radio" name="Schulform" value="2"> Wöchentlich<br>
+                    <input type="radio" name="Schulform" value="Block"> Block
+                    <input type="radio" name="Schulform" value="Wöchentlich"> Wöchentlich<br>
                     <label>Ich möchte selbst Fahrten anbieten: </label>
                     <input type="radio" name="istFahrer" value="1"> Ja
                     <input type="radio" name="istFahrer" value="2"> Nein<br>
